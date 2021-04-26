@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Git Trends Explorer</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="element_text">text</string>
+    <string name="repo_link_text">"Link: "</string>
+    <string name="repo_language_text">"Language: "</string>
+    <string name="repo_description_text">"Description: "</string>
+</resources>
