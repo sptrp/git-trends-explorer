@@ -9,10 +9,11 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.ivanponomarev.domain.Repo
 import com.ivanponomarev.gittrends.startpage.R
 
-class RecyclerViewAdapter :
+class RecyclerViewAdapter(val showDetailsFragment: (Repo?) -> Unit) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
         private var data = emptyList<Repo?>()
+        lateinit var mRecyclerView: RecyclerView
 
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val textView: TextView = view.findViewById(R.id.text_item_view)
@@ -25,7 +26,11 @@ class RecyclerViewAdapter :
 
             val view = inflater.inflate(R.layout.repo_card, viewGroup, false)
 
-            return ViewHolder(view)
+            // Return ViewHolder and showDetailsFragment on click
+            return ViewHolder(view).listen { pos, type ->
+                val item = data[pos]
+                showDetailsFragment(item)
+            }
         }
 
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
@@ -34,10 +39,12 @@ class RecyclerViewAdapter :
             val avatarURI = data[position]?.avatar
             viewHolder.imageView.setImageURI(avatarURI)
 
-            viewHolder.imageView.setOnClickListener {
+        }
 
-            }
+        override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+            super.onAttachedToRecyclerView(recyclerView)
 
+            mRecyclerView = recyclerView
         }
 
         override fun getItemCount(): Int = data.size
@@ -45,5 +52,13 @@ class RecyclerViewAdapter :
         fun setData(newData: List<Repo?>) {
             data = newData
             notifyDataSetChanged()
+        }
+
+        // Extend ViewHolder with listener
+        private fun <T : RecyclerView.ViewHolder> T.listen(event: (position: Int, type: Int) -> Unit): T {
+            itemView.setOnClickListener {
+                event.invoke(adapterPosition, itemViewType)
+            }
+            return this
         }
 }

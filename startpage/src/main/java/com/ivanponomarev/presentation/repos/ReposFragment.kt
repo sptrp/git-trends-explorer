@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.ivanponomarev.domain.Repo
+import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.ActivityMainContentFragmentBinding
+import com.ivanponomarev.presentation.details.RepoCardDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ReposFragment : Fragment() {
@@ -22,7 +24,7 @@ class ReposFragment : Fragment() {
     private val startPageViewModel: StartPageViewModel by viewModels()
 
     private lateinit var activityMainContentBinding: ActivityMainContentFragmentBinding
-    private val myAdapter by lazy { RecyclerViewAdapter() }
+    private val recyclerViewAdapter by lazy { RecyclerViewAdapter(this::showDetailsFragment) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,12 +39,12 @@ class ReposFragment : Fragment() {
 
         val recyclerView = activityMainContentBinding.recyclerView
 
-        recyclerView.adapter = myAdapter
+        recyclerView.adapter = recyclerViewAdapter
 
         startPageViewModel.fetchReposData()
         startPageViewModel.myResponseRepos.observe(viewLifecycleOwner, Observer { response ->
             if (response.isEmpty().not()) {
-                myAdapter.setData(response)
+                recyclerViewAdapter.setData(response)
 
             } else {
                 //Toast.makeText(this, "Connection error", Toast.LENGTH_SHORT)
@@ -55,6 +57,11 @@ class ReposFragment : Fragment() {
 
     private fun showDetailsFragment(data: Repo?) {
 
+        val transaction = myContext!!.supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.details_fragment_container, RepoCardDetailsFragment(data))
+        transaction.commit()
+
+        transaction.addToBackStack("details")
     }
 
     override fun onAttach(context: Context) {
