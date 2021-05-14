@@ -17,6 +17,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageButton
+            android:id="@+id/favorites_button"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_heart_solid"
+            android:background="@color/white"
+            android:layout_gravity="end"
+            android:layout_marginRight="20dp"/>
+
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -36,20 +45,46 @@
             android:layout_height="130dp"
             fresco:placeholderImage="@drawable/git_logo" />
 
+
+        <TextView
+            android:id="@+id/repo_description_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/description_title"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/repo_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
 
+        <TextView
+            android:id="@+id/repo_languages_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/languages_title"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/repo_language"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
 
+        <TextView
+            android:id="@+id/repo_link_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/link_title"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/repo_link"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
 
 
     </LinearLayout>

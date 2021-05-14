@@ -6,4 +6,7 @@
     <string name="repo_link_text">"Link: "</string>
     <string name="repo_language_text">"Language: "</string>
     <string name="repo_description_text">"Description: "</string>
+    <string name="description_title">Description:</string>
+    <string name="languages_title">Languages:</string>
+    <string name="link_title">Link:</string>
 </resources>
