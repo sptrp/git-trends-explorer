@@ -9,7 +9,7 @@ apply from: '../dependecies.gradle'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.ivanponomarev.gittrends"
@@ -51,6 +51,9 @@ dependencies {
     implementation android.fragment
     implementation android.appCompat
     implementation android.androidx
+    implementation android.preferences
+    implementation android.preferencesKtx
+    implementation android.material
 
     implementation commonDependencies.fresco
 

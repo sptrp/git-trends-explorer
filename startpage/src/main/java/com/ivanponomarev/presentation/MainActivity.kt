@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.facebook.drawee.backends.pipeline.Fresco
+import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.ActivityMainBinding
 import com.ivanponomarev.presentation.repos.StartPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +32,21 @@ class MainActivity : AppCompatActivity() {
           //  Log.d("Title", "Setting title")
             //supportActionBar?.title = it
         //})
+        activityMainBinding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.home_nav_button -> {
+                    // Respond to navigation item 1 click
+
+                    Log.d("Bottom navigation", "Clicked Home")
+                    true
+                }
+                R.id.favorites_nav_button -> {
+                    // Respond to navigation item 2 click
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

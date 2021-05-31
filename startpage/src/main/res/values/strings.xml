@@ -9,4 +9,6 @@
     <string name="description_title">Description:</string>
     <string name="languages_title">Languages:</string>
     <string name="link_title">Link:</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
 </resources>

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_nav_button"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/favorites_nav_button"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_grade_24"
+        android:title="@string/favorites"/>
+</menu>
