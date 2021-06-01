@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.ivanponomarev.presentation.repos.StartPageViewModel" />
+            type="com.ivanponomarev.presentation.startpage.StartPageViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -17,18 +17,11 @@
         tools:context=".MainActivity">
 
         <fragment
-            android:name="com.ivanponomarev.presentation.repos.ReposFragment"
-            android:id="@+id/mainContentFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"/>
-
-        <FrameLayout
-            android:id="@+id/details_fragment_container"
+            android:name="com.ivanponomarev.presentation.startpage.StartPageFragment"
+            android:id="@+id/startPageFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MergeRootFrame" />
 
 

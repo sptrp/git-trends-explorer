@@ -1,4 +1,4 @@
-package com.ivanponomarev.presentation.repos
+package com.ivanponomarev.presentation.startpage
 
 import android.view.LayoutInflater
 import android.view.View

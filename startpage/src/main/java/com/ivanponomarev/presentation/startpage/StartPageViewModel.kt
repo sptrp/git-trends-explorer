@@ -1,4 +1,4 @@
-package com.ivanponomarev.presentation.repos
+package com.ivanponomarev.presentation.startpage
 
 import android.util.Log
 import androidx.databinding.ObservableField
@@ -28,10 +28,7 @@ class StartPageViewModel @Inject constructor(
         Log.i("mainViewModel", "Created")
     }
 
-    fun setName(name: String?) {
-
-        this.name.set(name)
-    }
+    fun setName(name: String?) { this.name.set(name) }
 
     fun updateActionBarTitle(title: String) = _title.postValue(title)
 

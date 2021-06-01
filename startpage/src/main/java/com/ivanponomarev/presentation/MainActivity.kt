@@ -3,20 +3,16 @@ package com.ivanponomarev.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.ActivityMainBinding
-import com.ivanponomarev.presentation.repos.StartPageViewModel
+import com.ivanponomarev.presentation.favourites.FavouritesFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private val startPageViewModel: StartPageViewModel by viewModels()
 
     private lateinit var activityMainBinding: ActivityMainBinding
 
@@ -36,12 +32,16 @@ class MainActivity : AppCompatActivity() {
             when(item.itemId) {
                 R.id.home_nav_button -> {
                     // Respond to navigation item 1 click
-
                     Log.d("Bottom navigation", "Clicked Home")
+                    this.supportFragmentManager.popBackStack()
+
                     true
                 }
                 R.id.favorites_nav_button -> {
                     // Respond to navigation item 2 click
+                    Log.d("Bottom navigation", "Clicked Favourites")
+                    showFavouritesFragment()
+
                     true
                 }
                 else -> false
@@ -61,6 +61,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showFavouritesFragment() {
+
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.startPageFragment, FavouritesFragment())
+        transaction.commit()
+
+        transaction.addToBackStack("favourites")
     }
 
 }

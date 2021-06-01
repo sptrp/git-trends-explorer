@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.ivanponomarev.presentation.repos.StartPageViewModel" />
+            type="com.ivanponomarev.presentation.favourites.FavouritesViewModel" />
     </data>
 
     <RelativeLayout
@@ -20,7 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingBottom="50dp">
+            android:paddingBottom="50dp"
+            android:background="@color/black"
+            android:clickable="true"
+            android:focusable="true">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -36,17 +39,11 @@
                     android:gravity="center"
                     android:minHeight="?actionBarSize"
                     android:padding="@dimen/appbar_padding"
-                    android:text="@string/app_name"
+                    android:text="@string/favourites"
                     android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                     android:textColor="@android:color/background_dark" />
 
             </androidx.appcompat.widget.Toolbar>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="LinearLayoutManager" />
 
         </LinearLayout>
 

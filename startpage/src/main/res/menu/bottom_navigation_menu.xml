@@ -9,6 +9,6 @@
         android:id="@+id/favorites_nav_button"
         android:enabled="true"
         android:visible="true"
-        android:icon="@drawable/ic_baseline_grade_24"
+        android:icon="@drawable/ic_heart_solid_24"
         android:title="@string/favorites"/>
 </menu>

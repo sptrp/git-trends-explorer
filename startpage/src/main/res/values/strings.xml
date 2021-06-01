@@ -11,4 +11,5 @@
     <string name="link_title">Link:</string>
     <string name="home">Home</string>
     <string name="favorites">Favorites</string>
+    <string name="favourites">Favourites</string>
 </resources>
