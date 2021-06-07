@@ -13,20 +13,29 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.ivanponomarev.domain.PrefManager
 
 import com.ivanponomarev.domain.Repo
-import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.RepoCardDetailsFragmentBinding
 import com.ivanponomarev.util.toJson
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
-class RepoCardDetailsFragment(private val data: Repo?) : Fragment() {
+@AndroidEntryPoint
+class RepoCardDetailsFragment @Inject constructor(
+        private val data: Repo?
+) : Fragment() {
 
     private lateinit var repoCardDetailsFragmentBinding: RepoCardDetailsFragmentBinding
+
+    @Inject
+    lateinit var sharedPrefManager: PrefManager
+
+    private lateinit var favButton: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +44,8 @@ class RepoCardDetailsFragment(private val data: Repo?) : Fragment() {
     ): View? {
 
         repoCardDetailsFragmentBinding = RepoCardDetailsFragmentBinding.inflate(inflater, container, false)
+
+        favButton = repoCardDetailsFragmentBinding.favoritesButton
 
         return repoCardDetailsFragmentBinding.root
     }
@@ -45,7 +56,6 @@ class RepoCardDetailsFragment(private val data: Repo?) : Fragment() {
 
         val activity = activity as AppCompatActivity
         val supportActionBar = repoCardDetailsFragmentBinding.reposDetailsFragmentToolbar
-        val favButton = repoCardDetailsFragmentBinding.favoritesButton
 
         activity.setSupportActionBar(supportActionBar)
 
@@ -67,30 +77,23 @@ class RepoCardDetailsFragment(private val data: Repo?) : Fragment() {
             repoCardDetailsFragmentBinding.repoLink.text = data.url
         }
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         favButton.setOnClickListener {
 
-            val sharedPref = activity.getPreferences(Context.MODE_PRIVATE)
+            //val sharedPref = activity.getPreferences(Context.MODE_PRIVATE)
             val key = "item_" + data?.name
 
-            with (sharedPref.edit()) {
-                putString(key, data.toJson())
-                apply()
-                Log.d("Favlistener", key)
-                Log.d("Favlistener", sharedPref.all.size.toString())
-                Toast.makeText(context, "Added " + data?.name + " to favorites", Toast.LENGTH_SHORT).show()
-            }
+            Log.d("favourites", key)
+            Toast.makeText(context, "Added " + data?.name + " to favorites", Toast.LENGTH_SHORT).show()
+            sharedPrefManager.item = data.toJson()
+
+            return@setOnClickListener
         }
 
-        favButton.setOnTouchListener(View.OnTouchListener { v, event ->
-
-            if (event.action == MotionEvent.ACTION_BUTTON_RELEASE) {
-                favButton.setBackgroundColor(Color.BLACK)
-
-            } else if (event.action == MotionEvent.ACTION_BUTTON_PRESS) {
-                favButton.setBackgroundColor(Color.RED);
-            }
-            return@OnTouchListener true
-        })
     }
 
 }

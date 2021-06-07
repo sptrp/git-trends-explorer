@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="50dp"
-            android:background="@color/black"
+            android:background="@color/white"
             android:clickable="true"
             android:focusable="true">
 
@@ -44,6 +44,12 @@
                     android:textColor="@android:color/background_dark" />
 
             </androidx.appcompat.widget.Toolbar>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favourites_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager" />
 
         </LinearLayout>
 

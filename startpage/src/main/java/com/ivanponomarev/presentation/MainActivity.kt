@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.facebook.drawee.backends.pipeline.Fresco
+import com.ivanponomarev.domain.PrefManager
 import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.ActivityMainBinding
 import com.ivanponomarev.presentation.favourites.FavouritesFragment
+import com.ivanponomarev.presentation.favourites.FavouritesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
+
+    private lateinit var sharedPrefManager: PrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +26,11 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.lifecycleOwner = this
         setContentView(activityMainBinding.root)
 
+        // Disable auto night mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         Fresco.initialize(this)
 
-        //mainViewModel.title.observe(this, Observer {
-          //  Log.d("Title", "Setting title")
-            //supportActionBar?.title = it
-        //})
         activityMainBinding.bottomNavigationView.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.home_nav_button -> {
@@ -65,11 +68,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFavouritesFragment() {
 
+        sharedPrefManager = PrefManager(this)
+
         val transaction = supportFragmentManager.beginTransaction()
+        /*transaction.replace(R.id.startPageFragment, FavouritesFragment())*/
         transaction.replace(R.id.startPageFragment, FavouritesFragment())
         transaction.commit()
 
         transaction.addToBackStack("favourites")
     }
+
 
 }

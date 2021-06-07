@@ -9,21 +9,23 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.ivanponomarev.domain.PrefManager
 import com.ivanponomarev.domain.Repo
 import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.StartPageFragmentBinding
 import com.ivanponomarev.presentation.details.RepoCardDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class StartPageFragment : Fragment() {
+class StartPageFragment @Inject constructor() : Fragment() {
 
     private var myContext: FragmentActivity? = null
 
     private val startPageViewModel: StartPageViewModel by viewModels()
 
     private lateinit var activityMainContentBinding: StartPageFragmentBinding
-    private val recyclerViewAdapter by lazy { RecyclerViewAdapter(this::showDetailsFragment) }
+    private val startPageRecyclerViewAdapter by lazy { StartPageRecyclerViewAdapter(this::showDetailsFragment) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,16 +36,14 @@ class StartPageFragment : Fragment() {
         activityMainContentBinding = StartPageFragmentBinding.inflate(layoutInflater)
         activityMainContentBinding.lifecycleOwner = this
 
-        val view = activityMainContentBinding.root
+        val startPageRecyclerView = activityMainContentBinding.startPageRecyclerView
 
-        val recyclerView = activityMainContentBinding.recyclerView
-
-        recyclerView.adapter = recyclerViewAdapter
+        startPageRecyclerView.adapter = startPageRecyclerViewAdapter
 
         startPageViewModel.fetchReposData()
-        startPageViewModel.myResponseRepos.observe(viewLifecycleOwner, Observer { response ->
+        startPageViewModel.myResponseRepos.observe(viewLifecycleOwner, { response ->
             if (response.isEmpty().not()) {
-                recyclerViewAdapter.setData(response)
+                startPageRecyclerViewAdapter.setData(response)
 
             } else {
                 //Toast.makeText(this, "Connection error", Toast.LENGTH_SHORT)
@@ -51,12 +51,13 @@ class StartPageFragment : Fragment() {
             }
         })
 
-        return view
+        return activityMainContentBinding.root
     }
 
     private fun showDetailsFragment(data: Repo?) {
 
         val transaction = myContext!!.supportFragmentManager.beginTransaction()
+        //transaction.replace(R.id.startPageFragment, RepoCardDetailsFragment(data))
         transaction.replace(R.id.startPageFragment, RepoCardDetailsFragment(data))
         transaction.commit()
 

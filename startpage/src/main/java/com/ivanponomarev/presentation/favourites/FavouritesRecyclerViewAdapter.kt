@@ -1,4 +1,4 @@
-package com.ivanponomarev.presentation.startpage
+package com.ivanponomarev.presentation.favourites
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +9,8 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.ivanponomarev.domain.Repo
 import com.ivanponomarev.gittrends.startpage.R
 
-class RecyclerViewAdapter(val showDetailsFragment: (Repo?) -> Unit) :
-    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class FavouritesRecyclerViewAdapter(val showDetailsFragment: (Repo?) -> Unit) :
+    RecyclerView.Adapter<FavouritesRecyclerViewAdapter.ViewHolder>() {
 
         private var data = emptyList<Repo?>()
         lateinit var mRecyclerView: RecyclerView
