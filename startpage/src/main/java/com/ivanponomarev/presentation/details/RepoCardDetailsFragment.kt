@@ -1,7 +1,6 @@
 package com.ivanponomarev.presentation.details
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Color
 import androidx.fragment.app.Fragment
 import android.os.Bundle
@@ -10,17 +9,14 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.ivanponomarev.domain.PrefManager
-
 import com.ivanponomarev.domain.Repo
 import com.ivanponomarev.gittrends.startpage.databinding.RepoCardDetailsFragmentBinding
+import com.ivanponomarev.util.SharedPrefManager
 import com.ivanponomarev.util.toJson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -33,7 +29,7 @@ class RepoCardDetailsFragment @Inject constructor(
     private lateinit var repoCardDetailsFragmentBinding: RepoCardDetailsFragmentBinding
 
     @Inject
-    lateinit var sharedPrefManager: PrefManager
+    lateinit var sharedPrefManager: SharedPrefManager
 
     private lateinit var favButton: ImageButton
 

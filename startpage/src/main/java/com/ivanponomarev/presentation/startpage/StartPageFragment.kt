@@ -29,10 +29,10 @@ class StartPageFragment @Inject constructor() : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        val startPageRecyclerView = activityMainContentBinding.startPageRecyclerView
-
         activityMainContentBinding = StartPageFragmentBinding.inflate(layoutInflater)
         activityMainContentBinding.lifecycleOwner = this
+
+        val startPageRecyclerView = activityMainContentBinding.startPageRecyclerView
 
         startPageRecyclerView.adapter = startPageRecyclerViewAdapter
 

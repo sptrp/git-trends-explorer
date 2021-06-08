@@ -28,10 +28,10 @@ class FavouritesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val favouritesRecyclerView = favouritesBinding.favouritesRecyclerView
-
         favouritesBinding = FavouritesFragmentBinding.inflate(layoutInflater)
         favouritesBinding.lifecycleOwner = this
+
+        val favouritesRecyclerView = favouritesBinding.favouritesRecyclerView
 
         favouritesRecyclerView.adapter = favouritesRecyclerViewAdapter
 
