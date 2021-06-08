@@ -20,16 +20,13 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FavouritesFragment : Fragment() {
 
-    @Inject
-    lateinit var sharedPrefManager: PrefManager
-
     private var myContext: FragmentActivity? = null
 
     private lateinit var favouritesBinding: FavouritesFragmentBinding
 
     private val favouritesViewModel: FavouritesViewModel by viewModels()
 
-    private val favouritesRecyclerViewAdapter by lazy { StartPageRecyclerViewAdapter(this::showDetailsFragment) }
+    private val favouritesRecyclerViewAdapter by lazy { FavouritesRecyclerViewAdapter(this::showDetailsFragment) }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -43,13 +40,22 @@ class FavouritesFragment : Fragment() {
 
         favouritesViewModel.fetchFavouritesData()
 
+        favouritesViewModel.favourites.observe(viewLifecycleOwner, { response ->
+            if (response.isEmpty().not()) {
+                favouritesRecyclerViewAdapter.setData(response)
+
+            } else {
+                //Toast.makeText(this, "Connection error", Toast.LENGTH_SHORT)
+
+            }
+        })
+
         return favouritesBinding.root
     }
 
     private fun showDetailsFragment(data: Repo?) {
 
         val transaction = myContext!!.supportFragmentManager.beginTransaction()
-        //transaction.replace(R.id.startPageFragment, RepoCardDetailsFragment(data))
         transaction.replace(R.id.startPageFragment, RepoCardDetailsFragment(data))
         transaction.commit()
 

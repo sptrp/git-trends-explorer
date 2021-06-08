@@ -15,22 +15,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StartPageViewModel @Inject constructor(
-    private var getAllReposUseCase: GetAllReposUseCase) : ViewModel() {
+    private var getAllReposUseCase: GetAllReposUseCase
+) : ViewModel() {
 
     var name = ObservableField<String>()
 
     var myResponseRepos: MutableLiveData<List<Repo?>> = MutableLiveData()
-    private val _title = MutableLiveData<String>()
-    val title: LiveData<String>
-        get() = _title
 
     init {
         Log.i("mainViewModel", "Created")
     }
-
-    fun setName(name: String?) { this.name.set(name) }
-
-    fun updateActionBarTitle(title: String) = _title.postValue(title)
 
     fun fetchReposData() {
         viewModelScope.launch(Dispatchers.IO) {

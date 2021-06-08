@@ -57,7 +57,6 @@ class StartPageFragment @Inject constructor() : Fragment() {
     private fun showDetailsFragment(data: Repo?) {
 
         val transaction = myContext!!.supportFragmentManager.beginTransaction()
-        //transaction.replace(R.id.startPageFragment, RepoCardDetailsFragment(data))
         transaction.replace(R.id.startPageFragment, RepoCardDetailsFragment(data))
         transaction.commit()
 
