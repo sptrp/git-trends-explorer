@@ -29,7 +29,7 @@ class FavouritesViewModel @Inject constructor(
             var itemString = item.value as String
             favouriteItemsList.add(itemString.fromJson())
 
-            Log.i("favouritesContent", item.value.toString())
+            Log.i(item.key, item.value.toString())
         }
 
         favourites.postValue(favouriteItemsList)

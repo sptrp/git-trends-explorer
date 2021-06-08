@@ -12,7 +12,8 @@ class SharedPrefManager @Inject constructor(@ApplicationContext context: Context
 
     var item: String
         get() = prefs.getString("", null) ?: "my default value"
-        set(value) = prefs.edit().putString("favourite_" + prefs.all.size, value).apply()
+        set(value) = prefs.edit().putString(value.substring(value.indexOf("name") + 7, value.indexOf("avatar") - 3), value)
+                .apply()
 
 
     var getAll: MutableMap<String, *> = prefs.all
