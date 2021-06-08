@@ -8,14 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
-import com.ivanponomarev.domain.PrefManager
 import com.ivanponomarev.domain.Repo
 import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.FavouritesFragmentBinding
 import com.ivanponomarev.presentation.details.RepoCardDetailsFragment
-import com.ivanponomarev.presentation.startpage.StartPageRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class FavouritesFragment : Fragment() {
