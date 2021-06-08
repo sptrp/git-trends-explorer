@@ -27,7 +27,7 @@ class StartPageRecyclerViewAdapter(val showDetailsFragment: (Repo?) -> Unit) :
             val view = inflater.inflate(R.layout.repo_card, viewGroup, false)
 
             // Return ViewHolder and showDetailsFragment on click
-            return ViewHolder(view).listen { pos, type ->
+            return ViewHolder(view).listen { pos, _ ->
                 val item = data[pos]
                 showDetailsFragment(item)
             }
@@ -47,8 +47,6 @@ class StartPageRecyclerViewAdapter(val showDetailsFragment: (Repo?) -> Unit) :
             mRecyclerView = recyclerView
         }
 
-        override fun getItemCount(): Int = data.size
-
         fun setData(newData: List<Repo?>) {
             data = newData
             notifyDataSetChanged()
@@ -59,6 +57,9 @@ class StartPageRecyclerViewAdapter(val showDetailsFragment: (Repo?) -> Unit) :
             itemView.setOnClickListener {
                 event.invoke(adapterPosition, itemViewType)
             }
+
             return this
         }
+
+        override fun getItemCount(): Int = data.size
 }

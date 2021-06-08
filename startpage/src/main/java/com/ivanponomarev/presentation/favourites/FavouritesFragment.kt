@@ -28,15 +28,15 @@ class FavouritesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        val favouritesRecyclerView = favouritesBinding.favouritesRecyclerView
+
         favouritesBinding = FavouritesFragmentBinding.inflate(layoutInflater)
         favouritesBinding.lifecycleOwner = this
 
-        val favouritesRecyclerView = favouritesBinding.favouritesRecyclerView
-
         favouritesRecyclerView.adapter = favouritesRecyclerViewAdapter
 
+        // Fetch data and send it to recycler view adapter
         favouritesViewModel.fetchFavouritesData()
-
         favouritesViewModel.favourites.observe(viewLifecycleOwner, { response ->
             if (response.isEmpty().not()) {
                 favouritesRecyclerViewAdapter.setData(response)

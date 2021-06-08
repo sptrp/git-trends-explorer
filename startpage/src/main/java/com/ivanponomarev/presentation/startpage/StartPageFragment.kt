@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import com.ivanponomarev.domain.PrefManager
 import com.ivanponomarev.domain.Repo
 import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.StartPageFragmentBinding
@@ -25,21 +23,20 @@ class StartPageFragment @Inject constructor() : Fragment() {
     private val startPageViewModel: StartPageViewModel by viewModels()
 
     private lateinit var activityMainContentBinding: StartPageFragmentBinding
+
     private val startPageRecyclerViewAdapter by lazy { StartPageRecyclerViewAdapter(this::showDetailsFragment) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+
+        val startPageRecyclerView = activityMainContentBinding.startPageRecyclerView
 
         activityMainContentBinding = StartPageFragmentBinding.inflate(layoutInflater)
         activityMainContentBinding.lifecycleOwner = this
 
-        val startPageRecyclerView = activityMainContentBinding.startPageRecyclerView
-
         startPageRecyclerView.adapter = startPageRecyclerViewAdapter
 
+        // Fetch data and send it to recycler view adapter
         startPageViewModel.fetchReposData()
         startPageViewModel.myResponseRepos.observe(viewLifecycleOwner, { response ->
             if (response.isEmpty().not()) {
