@@ -27,13 +27,17 @@ class MainActivity : AppCompatActivity() {
 
         Fresco.initialize(this)
 
+        // Navigation
         activityMainBinding.bottomNavigationView.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.home_nav_button -> {
                     // Respond to navigation item 1 click
                     Log.d("Bottom navigation", "Clicked Home")
-                    this.supportFragmentManager.popBackStack()
-
+                    if (this.supportFragmentManager.backStackEntryCount > 0) {
+                        for (f in 0 until this.supportFragmentManager.backStackEntryCount) {
+                            this.supportFragmentManager.popBackStack()
+                        }
+                    }
                     true
                 }
                 R.id.favorites_nav_button -> {
