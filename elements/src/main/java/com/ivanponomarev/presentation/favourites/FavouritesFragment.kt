@@ -2,9 +2,7 @@ package com.ivanponomarev.presentation.favourites
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
@@ -34,6 +32,8 @@ class FavouritesFragment : Fragment() {
         val favouritesRecyclerView = favouritesBinding.favouritesRecyclerView
 
         favouritesRecyclerView.adapter = favouritesRecyclerViewAdapter
+
+        setHasOptionsMenu(true)
 
         // Fetch data and send it to recycler view adapter
         favouritesViewModel.fetchFavouritesData()
@@ -65,4 +65,9 @@ class FavouritesFragment : Fragment() {
 
         super.onAttach(context)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.findItem(R.id.menu_item_info)?.isVisible = false
+    }
+
 }

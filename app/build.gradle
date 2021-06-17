@@ -60,5 +60,5 @@ dependencies {
     implementation commonDependencies.hilt
     kapt commonDependencies.hiltCompiler
 
-    implementation project(':startpage')
+    implementation project(':elements')
 }

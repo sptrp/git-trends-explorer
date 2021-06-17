@@ -2,9 +2,7 @@ package com.ivanponomarev.presentation.startpage
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
@@ -14,6 +12,7 @@ import com.ivanponomarev.gittrends.startpage.databinding.StartPageFragmentBindin
 import com.ivanponomarev.presentation.details.RepoCardDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class StartPageFragment @Inject constructor() : Fragment() {
@@ -27,7 +26,11 @@ class StartPageFragment @Inject constructor() : Fragment() {
     private val startPageRecyclerViewAdapter by lazy { StartPageRecyclerViewAdapter(this::showDetailsFragment) }
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         activityMainContentBinding = StartPageFragmentBinding.inflate(layoutInflater)
         activityMainContentBinding.lifecycleOwner = this
@@ -35,6 +38,8 @@ class StartPageFragment @Inject constructor() : Fragment() {
         val startPageRecyclerView = activityMainContentBinding.startPageRecyclerView
 
         startPageRecyclerView.adapter = startPageRecyclerViewAdapter
+
+        setHasOptionsMenu(true)
 
         // Fetch data and send it to recycler view adapter
         startPageViewModel.fetchReposData()
@@ -65,6 +70,10 @@ class StartPageFragment @Inject constructor() : Fragment() {
         myContext = activity as FragmentActivity
 
         super.onAttach(context)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.findItem(R.id.menu_item_info)?.isVisible = true
     }
 
 }

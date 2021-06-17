@@ -14,4 +14,5 @@
     <string name="favourites">Favourites</string>
     <string name="git_trends_today">Git Trends Today</string>
     <string name="move_item_to_favourites">Move item to favourites</string>
+    <string name="info">Info</string>
 </resources>

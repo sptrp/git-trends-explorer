@@ -1,4 +1,4 @@
-include ':startpage'
+include ':elements'
 include ':navigation'
 include ':app'
 rootProject.name = "GitTrends"

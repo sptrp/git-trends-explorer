@@ -2,6 +2,7 @@ package com.ivanponomarev.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -10,6 +11,7 @@ import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.ActivityMainBinding
 import com.ivanponomarev.presentation.favourites.FavouritesFragment
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -50,6 +52,14 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menu?.clear()
+        menuInflater.inflate(R.menu.menu, menu)
+
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

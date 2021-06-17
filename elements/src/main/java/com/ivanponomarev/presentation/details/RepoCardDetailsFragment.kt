@@ -2,28 +2,28 @@ package com.ivanponomarev.presentation.details
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.ivanponomarev.domain.Repo
+import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.RepoCardDetailsFragmentBinding
 import com.ivanponomarev.util.SharedPrefManager
 import com.ivanponomarev.util.toJson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
 class RepoCardDetailsFragment @Inject constructor(
-        private val data: Repo?
+    private val data: Repo?
 ) : Fragment() {
 
     private lateinit var repoCardDetailsFragmentBinding: RepoCardDetailsFragmentBinding
@@ -39,7 +39,13 @@ class RepoCardDetailsFragment @Inject constructor(
         savedInstanceState: Bundle?
     ): View? {
 
-        repoCardDetailsFragmentBinding = RepoCardDetailsFragmentBinding.inflate(inflater, container, false)
+        repoCardDetailsFragmentBinding = RepoCardDetailsFragmentBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+
+        setHasOptionsMenu(true)
 
         favButton = repoCardDetailsFragmentBinding.favoritesButton
 
@@ -60,7 +66,12 @@ class RepoCardDetailsFragment @Inject constructor(
         activity.supportActionBar?.setDisplayShowHomeEnabled(true)
 
         val titleText = SpannableString(data?.name)
-        titleText.setSpan(ForegroundColorSpan(Color.BLACK), 0, titleText.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE) // Set title color black
+        titleText.setSpan(
+            ForegroundColorSpan(Color.BLACK),
+            0,
+            titleText.length,
+            Spannable.SPAN_INCLUSIVE_INCLUSIVE
+        ) // Set title color black
         activity.supportActionBar?.title = titleText
 
         // Get shared preferences
@@ -89,7 +100,10 @@ class RepoCardDetailsFragment @Inject constructor(
 
             return@setOnClickListener
         }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.findItem(R.id.menu_item_info)?.isVisible = false
     }
 
 }
