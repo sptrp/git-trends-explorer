@@ -22,11 +22,11 @@ class FavouritesViewModel @Inject constructor(
 
     fun fetchFavouritesData() {
         val sharedPreferencesContent = sharedPrefManager.getAll
-        var favouriteItemsList = emptyList<Repo?>().toMutableList()
+        val favouriteItemsList = emptyList<Repo?>().toMutableList()
 
         sharedPreferencesContent.forEach { item ->
 
-            var itemString = item.value as String
+            val itemString = item.value as String
             favouriteItemsList.add(itemString.fromJson())
 
             Log.i(item.key, item.value.toString())
