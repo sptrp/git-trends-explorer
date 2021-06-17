@@ -43,11 +43,8 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.5.0'
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+    implementation android.kotlinstdlib
+    implementation android.androidxcore
 
     testImplementation androidTest.junit
     androidTestImplementation androidTest.androidxJunit
@@ -55,6 +52,7 @@ dependencies {
 
     implementation commonDependencies.kotlinxSerialization
     implementation commonDependencies.serializationConverter
+    implementation commonDependencies.hiltLifesycle
 
     implementation android.activity
     implementation android.fragment
@@ -64,13 +62,14 @@ dependencies {
     implementation android.androidxViewModel
     implementation android.material
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation android.androidxConstLayout
+    implementation android.androidArch
 
     implementation commonDependencies.fresco
 
     implementation commonDependencies.hilt
     kapt commonDependencies.hiltCompiler
+    implementation commonDependencies.hiltLifesycle
 
     api retrofit.retrofit
     api retrofit.retrofitAdapter

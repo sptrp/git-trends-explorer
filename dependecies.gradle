@@ -6,40 +6,46 @@ ext {
     commonDependencies = [
             hilt                   : "com.google.dagger:hilt-android:$hilt_version",
             hiltCompiler           : "com.google.dagger:hilt-compiler:$hilt_version",
+            hiltLifesycle          : "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03",
             fresco                 : "com.facebook.fresco:fresco:1.13.0",
             kotlinxSerialization   : "org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0",
             serializationConverter : "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
     ]
 
     android = [
-            androidxLivedata: "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1",
-            androidxViewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1",
-            androidx  : "androidx.core:core-ktx:1.3.2",
-            activity  : "androidx.activity:activity-ktx:$activity_version",
-            fragment  : "androidx.fragment:fragment-ktx:$fragment_version",
-            appCompat : "androidx.appcompat:appcompat:1.2.0",
-            preferences : "androidx.preference:preference:1.1.1",
-            preferencesKtx : "androidx.preference:preference-ktx:1.1.1",
-            material: "com.google.android.material:material:1.4.0-beta01"
+            kotlinstdlib           : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            kotlinxCoroutines      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3",
+            androidxcore           : "androidx.core:core-ktx:1.5.0",
+            androidxLivedata       : "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1",
+            androidxViewModel      : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1",
+            androidx               : "androidx.core:core-ktx:1.3.2",
+            androidxConstLayout    : "androidx.constraintlayout:constraintlayout:2.0.4",
+            androidArch            : "android.arch.lifecycle:extensions:1.1.1",
+            activity               : "androidx.activity:activity-ktx:$activity_version",
+            fragment               : "androidx.fragment:fragment-ktx:$fragment_version",
+            appCompat              : "androidx.appcompat:appcompat:1.2.0",
+            preferences            : "androidx.preference:preference:1.1.1",
+            preferencesKtx         : "androidx.preference:preference-ktx:1.1.1",
+            material               : "com.google.android.material:material:1.4.0-beta01"
     ]
 
     androidTest = [
-            junit            : "junit:junit:4.+",
-            androidxJunit    : "androidx.test.ext:junit:1.1.2",
-            androidxEspresso : "androidx.test.espresso:espresso-core:3.3.0"
+            junit                  : "junit:junit:4.+",
+            androidxJunit          : "androidx.test.ext:junit:1.1.2",
+            androidxEspresso       : "androidx.test.espresso:espresso-core:3.3.0"
     ]
 
     retrofit = [
-            retrofit : "com.squareup.retrofit2:retrofit:$retrofit_version",
-            retrofitAdapter : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
-            retrofitConverter : "com.squareup.retrofit2:converter-jackson:$retrofit_version",
+            retrofit               : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitAdapter        : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
+            retrofitConverter      : "com.squareup.retrofit2:converter-jackson:$retrofit_version",
 
-            jacksonCore : "com.fasterxml.jackson.core:jackson-core:$jackson_version",
-            jacksonAnnotations : "com.fasterxml.jackson.core:jackson-annotations:$jackson_version",
-            jacksonDatabind : "com.fasterxml.jackson.core:jackson-databind:$jackson_version",
-            jacksonModule : "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version",
-            http3Interceptor : "com.squareup.okhttp3:logging-interceptor:3.10.0",
-            http3 : "com.squareup.okhttp3:okhttp:4.7.2"
+            jacksonCore            : "com.fasterxml.jackson.core:jackson-core:$jackson_version",
+            jacksonAnnotations     : "com.fasterxml.jackson.core:jackson-annotations:$jackson_version",
+            jacksonDatabind        : "com.fasterxml.jackson.core:jackson-databind:$jackson_version",
+            jacksonModule          : "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version",
+            http3Interceptor       : "com.squareup.okhttp3:logging-interceptor:3.10.0",
+            http3                  : "com.squareup.okhttp3:okhttp:4.7.2"
     ]
 
 }
