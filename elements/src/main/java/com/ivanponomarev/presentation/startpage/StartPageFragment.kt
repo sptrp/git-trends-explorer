@@ -1,8 +1,15 @@
 package com.ivanponomarev.presentation.startpage
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
-import android.view.*
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
@@ -27,9 +34,9 @@ class StartPageFragment @Inject constructor() : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
 
         activityMainContentBinding = StartPageFragmentBinding.inflate(layoutInflater)
@@ -72,8 +79,24 @@ class StartPageFragment @Inject constructor() : Fragment() {
         super.onAttach(context)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.findItem(R.id.menu_item_info)?.isVisible = true
+    override fun onResume() {
+        super.onResume()
+
+        // Set support action bar to get three dots menu
+        val activity = activity as AppCompatActivity
+        val supportActionBar = activityMainContentBinding.toolbar
+
+        val titleText = SpannableString(getString(R.string.git_trends_today))
+        titleText.setSpan(
+                ForegroundColorSpan(Color.BLACK),
+                0,
+                titleText.length,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+        )
+
+        activity.supportActionBar?.title = titleText
+
+        activity.setSupportActionBar(supportActionBar)
     }
 
 }

@@ -34,15 +34,15 @@ class RepoCardDetailsFragment @Inject constructor(
     private lateinit var favButton: ImageButton
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View {
 
         repoCardDetailsFragmentBinding = RepoCardDetailsFragmentBinding.inflate(
-            inflater,
-            container,
-            false
+                inflater,
+                container,
+                false
         )
 
         setHasOptionsMenu(true)
@@ -56,6 +56,7 @@ class RepoCardDetailsFragment @Inject constructor(
     override fun onResume() {
         super.onResume()
 
+        // Set support action bar to get three dots menu
         val activity = activity as AppCompatActivity
         val supportActionBar = repoCardDetailsFragmentBinding.reposDetailsFragmentToolbar
 
