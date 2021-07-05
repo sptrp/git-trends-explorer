@@ -17,7 +17,7 @@
         tools:context=".MainActivity">
 
         <fragment
-            android:name="com.ivanponomarev.presentation.startpage.StartPageFragment"
+            class="com.ivanponomarev.presentation.startpage.StartPageFragment"
             android:id="@+id/startPageFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

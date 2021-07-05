@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.ActivityMainBinding
+
 import com.ivanponomarev.presentation.favourites.FavouritesFragment
+import com.ivanponomarev.presentation.info.InfoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -70,6 +72,13 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Fragment", "removing fragment")
                 this.supportFragmentManager.popBackStack()
 
+                return true
+            }
+
+            R.id.menu_item_info -> {
+                Log.d("Menu", "On info clicked")
+                showInfoFragment()
+
                 return false
             }
         }
@@ -85,5 +94,13 @@ class MainActivity : AppCompatActivity() {
         transaction.addToBackStack("favourites")
     }
 
+    private fun showInfoFragment() {
+
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.startPageFragment, InfoFragment())
+        transaction.commit()
+
+        transaction.addToBackStack("info")
+    }
 
 }

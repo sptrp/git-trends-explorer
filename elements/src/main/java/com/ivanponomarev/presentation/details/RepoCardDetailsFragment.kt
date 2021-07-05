@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import com.ivanponomarev.domain.Repo
 import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.RepoCardDetailsFragmentBinding
+
 import com.ivanponomarev.util.SharedPrefManager
 import com.ivanponomarev.util.toJson
 import dagger.hilt.android.AndroidEntryPoint
@@ -84,7 +85,6 @@ class RepoCardDetailsFragment @Inject constructor(
             repoCardDetailsFragmentBinding.repoLanguage.text = data.language
             repoCardDetailsFragmentBinding.repoLink.text = data.url
         }
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

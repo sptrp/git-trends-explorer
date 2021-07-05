@@ -15,4 +15,11 @@
     <string name="git_trends_today">Git Trends Today</string>
     <string name="move_item_to_favourites">Move item to favourites</string>
     <string name="info">Info</string>
+    <string name="developer_title">Developer: </string>
+    <string name="email_title">Email: </string>
+    <string name="email">vankap0n@gmail.com</string>
+    <string name="linkedin_title">LinkedIn:</string>
+    <string name="linkedin">linkedin.com/in/ivan-ponomarev-38222018a</string>
+    <string name="github_title">Github:</string>
+    <string name="github">https://github.com/sptrp</string>
 </resources>

@@ -2,7 +2,11 @@ package com.ivanponomarev.presentation.favourites
 
 import android.content.Context
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
@@ -24,7 +28,7 @@ class FavouritesFragment : Fragment() {
     private val favouritesRecyclerViewAdapter by lazy { FavouritesRecyclerViewAdapter(this::showDetailsFragment) }
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         favouritesBinding = FavouritesFragmentBinding.inflate(layoutInflater)
         favouritesBinding.lifecycleOwner = this

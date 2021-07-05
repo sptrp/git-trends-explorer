@@ -18,15 +18,14 @@ import com.ivanponomarev.gittrends.startpage.R
 import com.ivanponomarev.gittrends.startpage.databinding.StartPageFragmentBinding
 import com.ivanponomarev.presentation.details.RepoCardDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class StartPageFragment @Inject constructor() : Fragment() {
+class StartPageFragment : Fragment() {
 
     private var myContext: FragmentActivity? = null
 
-    private val startPageViewModel: StartPageViewModel by viewModels()
+    val startPageViewModel: StartPageViewModel by viewModels()
 
     private lateinit var activityMainContentBinding: StartPageFragmentBinding
 
@@ -86,12 +85,14 @@ class StartPageFragment @Inject constructor() : Fragment() {
         val activity = activity as AppCompatActivity
         val supportActionBar = activityMainContentBinding.toolbar
 
+        activity.setSupportActionBar(supportActionBar)
+
         val titleText = SpannableString(getString(R.string.git_trends_today))
         titleText.setSpan(
-                ForegroundColorSpan(Color.BLACK),
-                0,
-                titleText.length,
-                Spannable.SPAN_INCLUSIVE_INCLUSIVE
+            ForegroundColorSpan(Color.BLACK),
+            0,
+            titleText.length,
+            Spannable.SPAN_INCLUSIVE_INCLUSIVE
         )
 
         activity.supportActionBar?.title = titleText
