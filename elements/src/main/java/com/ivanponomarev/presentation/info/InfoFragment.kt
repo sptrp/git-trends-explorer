@@ -6,6 +6,8 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +34,8 @@ class InfoFragment : Fragment() {
             false
         )
 
+        setHasOptionsMenu(true)
+
         return infoFragmentBinding.root
     }
 
@@ -55,6 +59,10 @@ class InfoFragment : Fragment() {
         activity.supportActionBar?.title = titleText
 
         activity.setSupportActionBar(supportActionBar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.findItem(R.id.menu_item_info)?.isVisible = false
     }
 
 }

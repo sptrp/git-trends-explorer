@@ -38,14 +38,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/repos_details_fragment_toolbar"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:clickable="true">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/repo_avatar_details"
             android:layout_width="match_parent"
             android:layout_height="130dp"
             fresco:placeholderImage="@drawable/git_logo" />
-
 
         <TextView
             android:id="@+id/repo_description_title"
