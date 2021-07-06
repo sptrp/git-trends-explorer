@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Git Trends Explorer</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="element_text">text</string>
     <string name="repo_link_text">"Link: "</string>
     <string name="repo_language_text">"Language: "</string>
     <string name="repo_description_text">"Description: "</string>
@@ -14,7 +11,8 @@
     <string name="favourites">Favourites</string>
     <string name="git_trends_today">Git Trends Today</string>
     <string name="move_item_to_favourites">Move item to favourites</string>
-    <string name="info">Info</string>
+    <string name="info">About the app</string>
+    <string name="info_title">About the app</string>
     <string name="developer_title">Developer: </string>
     <string name="email_title">Email: </string>
     <string name="email">vankap0n@gmail.com</string>

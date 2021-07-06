@@ -23,7 +23,7 @@
             android:paddingBottom="50dp">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/startpage_fragment_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/Theme.GitTrendsExplorer.AppBarOverlay"

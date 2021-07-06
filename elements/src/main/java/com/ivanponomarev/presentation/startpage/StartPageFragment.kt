@@ -83,7 +83,7 @@ class StartPageFragment : Fragment() {
 
         // Set support action bar to get three dots menu
         val activity = activity as AppCompatActivity
-        val supportActionBar = activityMainContentBinding.toolbar
+        val supportActionBar = activityMainContentBinding.startpageFragmentToolbar
 
         activity.setSupportActionBar(supportActionBar)
 
